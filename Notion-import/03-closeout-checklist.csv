@@ -1,15 +1,15 @@
-Project,Document,Category,Responsible Party,Needs Signature,Needs Notary,Blocks Payment,Status,Notes
-3302 Chipco St,Company Invoice,Forms Luz prepares,Luz,No,No,Yes,Not started,Itemized; addressed to City of Tampa Development & Economic Opportunity
-3302 Chipco St,Contractor Payment Request form,Forms Luz prepares,Luz,Yes,No,Yes,Not started,Luz + Homeowner sign; City signs last
-3302 Chipco St,Cost Breakdown form,Forms Luz prepares,Luz,No,No,Yes,Not started,Vendors/amounts/dates/check #s; must match DMI-30
-3302 Chipco St,DMI-30 subcontractor payment report,Forms Luz prepares,Luz,No,No,Yes,Not started,Same sub/amount info as Cost Breakdown
-3302 Chipco St,Contractor Final Payment Affidavit & Release,Notarized,Luz + Notary,Yes,Yes,Yes,Not started,Keep ONE current version
-3302 Chipco St,Consolidated Final Lien Release,From subcontractors,Each subcontractor,Yes,No,Yes,Not started,Signature from EVERY sub on the job
-3302 Chipco St,Subcontractor invoices,From subcontractors,Subs,No,No,Yes,Not started,One per sub
-3302 Chipco St,Contractor Warranty Acknowledgement,Homeowner / warranty,Luz + Homeowner,Yes,No,Yes,Not started,Record warranty windows: general 1yr / roof 5yr / termite 1yr
-3302 Chipco St,Roof Mitigation verification statement,Job-type specific,Luz,No,No,Yes,Not started,ONLY if roofing work was done - easy to forget
-3302 Chipco St,Cancelled checks,Supporting / accounting,Luz,No,No,No,Not started,Supporting documentation
-3302 Chipco St,Receipts,Supporting / accounting,Luz,No,No,No,Not started,Supporting documentation
-3302 Chipco St,Actual vs. Budget reconciliation,Supporting / accounting,Luz,No,No,No,Not started,Excel tabs: DMI-20 / DMI-30s / Cost Breakdown
-3302 Chipco St,Email package to correct program,Submit,Luz,No,No,Yes,Not started,Healthy Homes OR CRA - see contacts
-3302 Chipco St,Save submitted copy in project folder,Submit,Luz,No,No,No,Not started,Archive what was actually sent
+Project,Phase,Document,Category,Responsible Party,Needs Signature,Needs Notary,Blocks Payment,Status,Notes
+3302 Chipco St,Closeout,Company Invoice,Forms Luz prepares,Luz,No,No,Yes,Not started,Itemized; addressed to City of Tampa Development & Economic Opportunity
+3302 Chipco St,Closeout,Contractor Payment Request form,Forms Luz prepares,Luz,Yes,No,Yes,Not started,Luz + Homeowner sign; City signs last
+3302 Chipco St,Closeout,Cost Breakdown form,Forms Luz prepares,Luz,No,No,Yes,Not started,Vendors/amounts/dates/check #s; must match DMI-30
+3302 Chipco St,Closeout,DMI-30 subcontractor payment report,Forms Luz prepares,Luz,No,No,Yes,Not started,Same sub/amount info as Cost Breakdown
+3302 Chipco St,Closeout,Contractor Final Payment Affidavit & Release,Notarized,Luz + Notary,Yes,Yes,Yes,Not started,Keep ONE current version
+3302 Chipco St,Closeout,Consolidated Final Lien Release,From subcontractors,Each subcontractor,Yes,No,Yes,Not started,Signature from EVERY sub on the job
+3302 Chipco St,Closeout,Subcontractor invoices,From subcontractors,Subs,No,No,Yes,Not started,One per sub
+3302 Chipco St,Closeout,Contractor Warranty Acknowledgement,Homeowner / warranty,Luz + Homeowner,Yes,No,Yes,Not started,Record warranty windows: general 1yr / roof 5yr / termite 1yr
+3302 Chipco St,Closeout,Roof Mitigation verification statement,Job-type specific,Luz,No,No,Yes,Not started,ONLY if roofing work was done - easy to forget
+3302 Chipco St,Closeout,Cancelled checks,Supporting / accounting,Luz,No,No,No,Not started,Supporting documentation
+3302 Chipco St,Closeout,Receipts,Supporting / accounting,Luz,No,No,No,Not started,Supporting documentation
+3302 Chipco St,Closeout,Actual vs. Budget reconciliation,Supporting / accounting,Luz,No,No,No,Not started,Excel tabs: DMI-20 / DMI-30s / Cost Breakdown
+3302 Chipco St,Closeout,Email package to correct program,Submit,Luz,No,No,Yes,Not started,Healthy Homes OR CRA - see contacts
+3302 Chipco St,Closeout,Save submitted copy in project folder,Submit,Luz,No,No,No,Not started,Archive what was actually sent

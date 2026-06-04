@@ -1,0 +1,12 @@
+Job Sub,Project,Subcontractor,Trade,Scope of Work,Amount,Counts toward SLBE?,COI Valid for Job?,Lien Release Signed?,Sub Invoice Received?,Notes
+3302 Chipco - City of Tampa (Permit),3302 Chipco St,,Permit / fees,Building permit & department fees,433.09,No,No,No,No,"Government fee, not a subcontractor - no lien release. Included so totals reconcile to the DMI-20."
+3302 Chipco - Hillsborough County,3302 Chipco St,,Notice of Commencement,Recording fee,13.46,No,No,No,No,Government fee - no lien release.
+3302 Chipco - Ambit Engineering,3302 Chipco St,"Ambit Engineering, LLC",Engineer / Survey,Engineering / survey,440.00,Yes,Yes,Yes,Yes,SLBE.
+3302 Chipco - Sunny R&R,3302 Chipco St,Sunny R&R LLC,Roofing & Fascia,Roof + fascia,11905.00,No,Yes,Yes,Yes,
+3302 Chipco - KapCook,3302 Chipco St,KapCook Enterprises LLC,Portable Toilet,Site / portable toilet,860.00,Yes,Yes,Yes,Yes,SLBE.
+3302 Chipco - Gruntle,3302 Chipco St,"Gruntle, LLC","Windows, Kitchen & Bathroom",Windows + kitchen + bath remodel,52896.59,No,Yes,Yes,Yes,Largest sub (~47% of sub value).
+3302 Chipco - W. Endless Solutions,3302 Chipco St,"W. Endless Solutions, LLC",Cleaning,Cleaning,750.00,No,Yes,Yes,Yes,Bid as 'Wanda Vivieca'; paid under W. Endless Solutions LLC.
+3302 Chipco - Orange Painting,3302 Chipco St,"Orange Painting Services, LLC","Painting, Drywall & Soffit",Painting / drywall / soffit,15810.00,Yes,Yes,Yes,Yes,SLBE.
+3302 Chipco - Colossus,3302 Chipco St,Colossus Construction Inc.,Plumbing,Plumbing,7500.00,No,Yes,Yes,Yes,
+3302 Chipco - Authentic Air,3302 Chipco St,Authentic Air Solutions LLC,HVAC,HVAC,7243.00,Yes,Yes,Yes,Yes,SLBE.
+3302 Chipco - All in One Electrical,3302 Chipco St,All in One Electrical Repairs and Installations LLC,Electrical,Electrical,14270.00,Yes,Yes,Yes,Yes,SLBE.

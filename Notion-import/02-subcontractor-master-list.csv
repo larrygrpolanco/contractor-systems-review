@@ -1,3 +1,12 @@
-Company,Contact Name,Trade,SLBE Status,Federal ID / EIN,Phone,Email,Insurance Carrier,Insurance Expiry,Typical Cost Range,Active?,Notes
-SAMPLE - Acme Roofing LLC,John Doe,Roofing,S,12-3456789,555-555-0101,john@acmeroof.example,State Farm,2026-12-31,8000-25000,Yes,"SAMPLE ROW - delete after import. S = SLBE-certified, O = Other."
-SAMPLE - Bright Spark Electric,Jane Roe,Electrical,O,98-7654321,555-555-0102,jane@brightspark.example,Allstate,2026-09-30,3000-12000,Yes,"SAMPLE ROW - delete after import."
+Company,Contact Name,Trade,SLBE Certified?,W/MBE Certified?,Federal ID / EIN,Phone,Email,Address,Insurance Carrier,Insurance on File?,Insurance Expiry,Active?,Notes
+"Ambit Engineering, LLC",,Engineer / Survey,Yes,,86-3095308,813-417-5828,,"3848 Sun City Center Blvd Ste 104 PMB 1027, Ruskin, FL 33573",,,,Yes,SLBE.
+"Sunny R&R LLC",,Roofing & Fascia,No,,83-3164510,407-761-4036,,"1922 Hillcrest St, Orlando, FL 32803",,,,Yes,DBA Sunny Roofing. Roof + fascia/soffit.
+"KapCook Enterprises LLC",,Portable Toilet / Site,Yes,,83-3172823,407-616-2274,,"10810 Boyette Road #148, Riverview, FL 33569",,,,Yes,SLBE. Portable toilet / site services.
+"Gruntle, LLC",,"Windows, Kitchen & Bathroom",No,,93-3732800,813-997-2147,,"39232 9th Avenue, Zephyrhills, FL 33542",,,,Yes,Largest sub on 3302 Chipco (~47% of sub value). Windows + kitchen + bath remodel.
+"W. Endless Solutions, LLC",Wanda Vivieca,Cleaning,No,,42-2273266,407-350-7038,,"1083 Vista Haven Cir Apt 204, Orlando, FL 32825",,,,Yes,"Contact Wanda Vivieca. On DMI-20 listed as individual 'Wanda Vivieca' (FEIN 050-72-1499); paid under the LLC (FEIN 42-2273266) - confirm correct FEIN."
+"Orange Painting Services, LLC",,"Painting, Drywall & Soffit",Yes,,36-5114192,813-678-5655,,"13014 N Dale Mabry Hwy Ste 127, Tampa, FL 33618",,,,Yes,"SLBE. Did painting, drywall & ceiling, and soffit across the job."
+"Colossus Construction Inc.",,Plumbing,No,,84-1834759,813-325-6298,,"6807 Donald Ave, Tampa, FL 33614",,,,Yes,Plumbing.
+"Authentic Air Solutions LLC",,HVAC,Yes,,84-3961344,813-446-1333,,"10948 Keys Gate Dr, Riverview, FL 33579",,,,Yes,SLBE. HVAC.
+"All in One Electrical Repairs and Installations LLC",,Electrical,Yes,,93-1390385,929-436-6368,,"4608 Driesler Circle, Tampa, FL 33634",,,,Yes,"SLBE. NOTE: two FEINs appear in the file - 93-1390385 (DMI-20 & DMI-30 P2) and 33-1792777 (DMI-30 P1). Confirm correct FEIN."
+"Burgo Construction, LLC",,Interior Painting,No,,41-3208263,929-405-6093,,"2108 Colonial Parc Dr Apt 204, Tampa, FL 33612",,,,Yes,"Added during construction (DMI-30 P2), not on the original bid. Interior painting."
+"GUAJIRO LLC",,Material Supplier,No,,84-4958965,,,"6510 Secrest Ct, Tampa, FL 33625",,,,Yes,Added during construction (DMI-30 P2). Material supplier.

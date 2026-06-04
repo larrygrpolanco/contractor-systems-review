@@ -1,163 +1,201 @@
 # Notion Import Pack — Lionize Construction
 
-This folder turns the scattered project/sub/payment tracking into **three linked Notion
-databases**. You (not Luz) set it up once; afterward Luz only uploads files and you walk
-her through each closeout.
+Turns the scattered project / sub / payment tracking into **four linked Notion databases**.
+You (not Luz) set it up once; afterward Luz only uploads files and you walk her through each
+job. The structure below is deliberately the part worth getting right *now* — tables and
+relations are painful to retrofit, while views, data, and reminders are cheap to change anytime.
 
-| File | Becomes the Notion database… | One row = |
-|---|---|---|
-| `01-projects-tracker.csv` | **Projects** (the hub) | one job (e.g. 3302 Chipco St) |
-| `02-subcontractor-master-list.csv` | **Subcontractors** (master list) | one sub company |
-| `03-closeout-checklist.csv` | **Closeout Items** | one required document, for one project |
+## The four databases — three layers
 
-The three are pre-seeded with the **3302 Chipco St** job so you can see the relations
-working immediately. The Subcontractors file has two `SAMPLE -` rows — delete them.
+| File | → Database | Layer | One row = |
+|---|---|---|---|
+| `02-subcontractor-master-list.csv` | **Subcontractors** | reusable master (built once) | one sub company |
+| `01-projects-tracker.csv` | **Projects** | the hub | one job (e.g. 3302 Chipco St) |
+| `04-job-subs.csv` | **Job Subs** | the link | one sub on one job (with $, lien release, COI) |
+| `03-closeout-checklist.csv` | **Closeout Items** | the link | one required document on one job |
+
+```
+  REUSABLE MASTER          THE HUB              THE LINKS (per-project)
+┌────────────────┐    ┌──────────────┐    ┌──────────────────────────┐
+│ Subcontractors │◀───│   Projects   │───▶│ Closeout Items (documents)│
+└────────────────┘    │  (60-day     │    │ Job Subs ($, lien, COI)   │
+        ▲             │   clock)     │───▶└──────────────────────────┘
+        └──── Job Subs links sub ◀──▶ job ──────────────┘
+```
+
+**Why Job Subs exists:** your three biggest pains — chasing a lien release from every sub
+(#1), no running sub system (#3), and SLBE % (#4) — are all the same missing fact: *which sub
+is on which job, for how much, and is their paperwork in.* That can't live in a plain
+relation (a relation has nowhere to put the dollar amount), so it gets its own table. Once it
+exists, SLBE %, "lien releases outstanding," and "what's blocking payment" all calculate
+themselves.
+
+The pack is pre-seeded with **3302 Chipco St** so relations work immediately. Rows prefixed
+`SAMPLE -` (in Subcontractors and Job Subs) are illustrations — **delete them after import.**
 
 ---
 
 ## The one thing to know before you start
 
-> **CSV import in Notion creates everything as plain Text, and it CANNOT create
-> relations.** You import the data first, then (1) fix the property types and
-> (2) add the relation links by hand. That's normal — it takes ~15 minutes. Steps below.
+> **CSV import creates every column as plain Text and CANNOT create relations.** Import the
+> data first, then (1) fix property types and (2) add the relation links by hand. ~20 minutes.
 
 ---
 
-## Step 1 — Import the three CSVs
+## Step 1 — Import the four CSVs
 
-For each file:
-
-1. In Notion, go to the page where this should live (make a page called
-   **"Lionize Construction"** first).
-2. Click **+ New page** → type a name (e.g. *Projects*) → in the page, type `/table`
-   and pick **Table - Full page**, OR use the top-right **`···` → Import → CSV**.
-3. The cleanest path: **`···` menu (top right) → Import → CSV → choose the file.**
-   Notion creates a new database with all the columns.
-
-Do this for all three. You'll now have three separate databases full of text columns.
+For each file: in your **Lionize Construction** page, top-right **`···` → Import → CSV** →
+choose the file. Notion makes a new database. Do all four.
 
 ## Step 2 — Fix the property (column) types
 
-Click each column header → **Edit property** → change **Type**. Recommended types:
+Click a column header → **Edit property** → change **Type**.
 
 **Projects**
 | Column | Type |
 |---|---|
-| Project | Title (already) |
-| Status | **Status** → groups: `Bidding`, `Active`, `Payment Pending`, `Closed` |
+| Project | Title |
+| Status | **Status** → `Assigned`, `Inspection`, `Scope Proposal`, `Approved / In Build`, `Payment Pending`, `Closed` |
 | Program | **Select** → `Healthy Homes`, `CRA` |
-| Roofing Job? | **Checkbox** (or Select Yes/No) |
-| Contract Total / Amount Received / Amount Outstanding | **Number** → format **Dollar** |
-| SLBE % | **Number** → format Percent (enter 34.45 as 34.45, or 0.3445 if you pick Percent) |
-| All `Date …` columns | **Date** |
+| Batch (Month) | **Select** (e.g. `2026-06`) — 6 homes assigned at the start of each month |
+| Roofing Job? | **Checkbox** |
+| Contract Total / Amount Received / Amount Outstanding | **Number → Dollar** |
+| SLBE % | **Number → Percent** (manual for historical jobs; auto-calculated for new ones — see Step 4) |
+| CPM Start Date | **Date** — clock starts at scope approval |
+| CPM Due Date | **Formula** → `dateAdd(prop("CPM Start Date"), 60, "days")` — the 60-day deadline |
+| Permit Expiry | **Date** |
+| other `Date …` | **Date** |
+| Dropbox Folder | **URL** |
 | Notes | Text |
 
 **Subcontractors**
 | Column | Type |
 |---|---|
 | Company | Title |
-| Trade | **Select** (Roofing, HVAC, Electrical, Plumbing, Painting, …) |
-| SLBE Status | **Select** → `S` (SLBE), `O` (Other) |
+| Trade | **Select** |
+| SLBE Certified? / W/MBE Certified? / Insurance on File? / Active? | **Checkbox** |
 | Insurance Expiry | **Date** |
-| Active? | **Checkbox** |
-| rest | Text |
+| Address / Phone / Email / Notes | Text |
+
+**Job Subs**
+| Column | Type |
+|---|---|
+| Job Sub | Title |
+| Amount | **Number → Dollar** |
+| Counts toward SLBE? / COI Valid for Job? / Lien Release Signed? / Sub Invoice Received? | **Checkbox** |
+| Scope of Work / Trade / Notes | Text |
 
 **Closeout Items**
 | Column | Type |
 |---|---|
 | Document | Title |
+| Phase | **Select** → `Inspection`, `Scope`, `Sub Qualification`, `Build`, `Closeout` (seed rows are all `Closeout`) |
 | Category | **Select** |
 | Status | **Status** → `Not started`, `In progress`, `Awaiting signature`, `Awaiting notary`, `Done` |
-| Needs Signature / Needs Notary / Blocks Payment | **Checkbox** (Notion reads `Yes`/`No` text — convert to checkbox and it ticks the Yes rows) |
+| Needs Signature / Needs Notary / Blocks Payment | **Checkbox** |
 | Notes | Text |
 
 ## Step 3 — Add the relations (the wiring)
 
-This is what makes it a *system* instead of three lists.
+For each, add a new property → Type **Relation** → pick the target database → turn ON
+**"Show on …"** so it's two-way. Then set each seed row's relation to *3302 Chipco St* /
+the matching sub. (The text `Project` / `Subcontractor` helper columns from the CSVs are just
+for matching — delete them once the relations are set.)
 
-**A. Closeout Items → Projects** (each document belongs to one job)
-1. Open **Closeout Items**. Add a new property → Type **Relation** → choose **Projects**.
-   Name it **Project**.
-2. Turn ON **"Show on Projects"** so the link is two-way.
-3. For each row, set its **Project** to *3302 Chipco St*. (The text `Project` column from
-   the CSV is just a helper — once the relation is set, you can delete the text column.)
+| In this database | Add relation → | Name it |
+|---|---|---|
+| Closeout Items | Projects | **Project** |
+| Job Subs | Projects | **Project** |
+| Job Subs | Subcontractors | **Subcontractor** |
 
-**B. Subcontractors ↔ Projects** (which subs worked which jobs — many-to-many)
-1. Open **Subcontractors**. Add property → **Relation** → **Projects**.
-   Name it **Jobs Worked**. Turn on "Show on Projects" (it appears as *Subcontractors* there).
-2. A sub can link to many projects and a project to many subs — that's expected.
+(That's it — `Subcontractors ↔ Projects` is now reachable *through* Job Subs, so you don't
+need a separate direct relation.)
 
-After this you'll have:
+## Step 4 — Add the rollups (this is the payoff)
 
-```
-        ┌──────────────┐
-        │   Projects   │  ◀── the hub
-        └──────┬───────┘
-       ┌───────┴────────┐
-       ▼                ▼
-┌──────────────┐  ┌──────────────────┐
-│ Closeout     │  │ Subcontractors   │
-│ Items        │  │ (master list)    │
-│ (1 job →     │  │ (many ↔ many)    │
-│  14 docs)    │  │                  │
-└──────────────┘  └──────────────────┘
-```
+On **Job Subs**, add one formula:
+- **SLBE Amount** → Formula → `if(prop("Counts toward SLBE?"), prop("Amount"), 0)`
 
-## Step 4 — Add rollups (auto-summaries on Projects)
+On **Projects**, add rollups over the **Job Subs** relation:
+- **Subbed Total** → Rollup → Job Subs → *Amount* → **Sum**
+- **SLBE Subbed** → Rollup → Job Subs → *SLBE Amount* → **Sum**
+- **SLBE % (calc)** → Formula → `prop("SLBE Subbed") / prop("Subbed Total")` → format Percent.
+  *This replaces hand-calculating SLBE — watch it against the 34.45%-type threshold live.*
+- **Lien Releases Outstanding** → Rollup → Job Subs → *Lien Release Signed?* → **Count unchecked**
+- **COIs Outstanding** → Rollup → Job Subs → *COI Valid for Job?* → **Count unchecked**
 
-On the **Projects** database, add **Rollup** properties so each job shows its own health:
+And over the **Closeout Items** relation:
+- **Payment Blockers Left** → Rollup → Closeout Items → *Blocks Payment* → count rows where
+  Blocks Payment is checked AND Status ≠ Done. When this hits **0**, the package is submittable.
 
-- **Open items** → Rollup → relation *Closeout Items* → property *Status* →
-  Calculate **Count** (or count-not-`Done`). Tells you how far from done each job is.
-- **Blockers left** → Rollup → *Closeout Items* → *Blocks Payment* → Count checked.
-  When this hits 0, the package is submittable.
+> Tie it together: the "Consolidated Final Lien Release" row in Closeout Items isn't marked
+> Done until **Lien Releases Outstanding = 0**. The junction feeds the checklist.
 
 ## Step 5 — Build the views
 
-- **Projects → Board view**, grouped by **Status** — your dashboard (Bidding → Active →
-  Payment Pending → Closed).
-- **Closeout Items → filtered view**: filter `Blocks Payment = checked` AND
-  `Status ≠ Done`, grouped by Project — "what's still blocking payment."
-- **Subcontractors → Table** sorted by **Insurance Expiry** ascending, with a filter
-  `Insurance Expiry is within the next 1 month` — catches expiring COIs before a job needs them.
+- **Projects → Board**, grouped by **Status** — the dashboard (Assigned → … → Closed).
+- **Projects → 60-Day Clock**: Table/Timeline sorted by **CPM Due Date** ↑, filter `Status ≠ Closed`.
+  The deadline radar — every home must finish 60 days after scope approval, 6 new homes a month.
+- **Closeout Items → Blockers**: filter `Blocks Payment = checked` AND `Status ≠ Done`, grouped
+  by Project — "what's still stopping payment."
+- **Job Subs → Lien-Release Chase**: filter `Lien Release Signed? = unchecked`, grouped by
+  Project — your call list when assembling a payment package.
+- **Subcontractors → COI Watch**: sort by **Insurance Expiry** ↑, filter `within the next 1 month`.
 
-## Step 6 — Make new projects one-click
+## Step 6 — Make new projects (almost) one-click
 
-So you don't rebuild the 14 closeout rows by hand each job:
-
-- **Easiest:** Keep the 3302 Chipco closeout rows as a "master set." For a new job,
-  select all 14 → **Duplicate** → bulk-edit the **Project** relation to the new job.
-- **Cleaner (optional):** In Closeout Items, make a **Database Template** containing the
-  14 standard documents, so "New → [template]" drops them in pre-filled. (Notion templates
-  can't auto-set the Project relation, so you still pick the project after — but the 14
-  rows + statuses come for free.)
-
----
-
-## How this connects to the rest of the system
-
-- **Files stay in Dropbox.** Don't upload PDFs into Notion. Instead add a **URL** property
-  (e.g. *Dropbox Folder*) on Projects and paste the share link. Notion is the index; Dropbox
-  is the file store. (Matches the decided stack.)
-- **Claude "cowork" layer.** Before submitting, export/copy the filtered Closeout view (or
-  paste the per-project checklist) and ask Claude *"what's outstanding and what's blocking
-  payment?"* — same flow as `Payment-closeout/closeout-checklist-template.md`.
-- The standalone markdown checklist in `Payment-closeout/` still works for paper/Claude use;
-  `03-closeout-checklist.csv` is the same content shaped for the Notion database.
+- Keep the 3302 Chipco **Closeout Items** rows as a master set; for a new job, select all 14 →
+  **Duplicate** → bulk-set the **Project** relation. (Or build a database **Template** holding
+  the 14 standard documents.)
+- Add Job Subs rows as you award each sub — picking the Subcontractor from the master list
+  pulls in their Fed ID, certs, and COI status, so you never rebuild the DMI-20 roster from scratch.
 
 ---
 
-## Recommended next step (the 4th table — only when you need it)
+## File naming + Dropbox (pain #5 — decide this now, it's free)
 
-The three databases above can't store **how much each sub was paid on each job** — a plain
-many-to-many relation has no place for the dollar amount. The moment you want Notion to
-**auto-calculate SLBE %** (instead of you computing it), add a 4th junction database:
+Files stay in **Dropbox**; Notion just links to them. Two conventions to lock in *now*, while
+Luz is uploading going forward (retrofitting names later is the painful part):
 
-**Job Subs** — one row per (project × sub):
-`Project (relation)`, `Subcontractor (relation)`, `Amount Paid ($)`, `SLBE? (rollup from sub)`,
-`Lien Release Signed? (checkbox)`, `Invoice Received? (checkbox)`.
+**1. Folder structure — use the one the Operating Procedures manual already defines.** Don't invent one.
+```
+Dropbox // Lionize Construction
+  └── 01. Tampa JOC - Home Rehab
+      └── 01. 2025. Home Rehab & Repairs Services
+          ├── 01. CRA Homes - BE        ← Program = CRA
+          └── 01. Healthy Homes - Marquaz ← Program = Healthy Homes
+              └── [Each home]
+                  ├── Walk Through
+                  ├── Scopes        (Cost Code Master)
+                  ├── Quotes
+                  ├── Blueprint
+                  ├── Test & Permit Fees
+                  └── Documents
+```
+Paste each home's folder link into the Project's **Dropbox Folder** URL property.
 
-Then a rollup on Projects sums SLBE-sub dollars ÷ total → SLBE %, and the lien-release
-checkboxes feed straight into the closeout. This also replaces the "Subs who must sign"
-table in the closeout template. **Hold off until the 3-table version is in daily use** —
-don't front-load the complexity on Luz's first exposure.
+**2. File names:** `[Address]-[DocType]-[YYYYMMDD].pdf` → e.g. `3302Chipco-Invoice-20260323.pdf`.
+Sortable, scannable, kills the duplicate-version problem (two affidavits, two lien releases).
+
+---
+
+## How this connects to the rest of the stack
+
+- **Claude "cowork" layer:** before submitting, copy the per-project **Blockers** view (or paste
+  the filled checklist) and ask Claude *"what's outstanding and what's blocking payment?"* — same
+  flow as `Payment-closeout/closeout-checklist-template.md`.
+- The standalone markdown checklist in `Payment-closeout/` still works for paper/Claude use.
+
+---
+
+## Deliberately deferred (not worth the effort yet)
+
+- **Full lifecycle checklist rows.** The `Phase` column lets Closeout Items eventually hold
+  Inspection (lead test pre-1978, radon for Healthy Homes, termite), Scope (Home Repair Proposal
+  Excel, homeowner approval, **post date to Gordian**), and Sub Qualification (COI, W/MBE + SLBE)
+  tasks. Add these template rows once the closeout flow is in daily use.
+- **Cost Code Master as a database.** The manual's CSI line items (01050 Lead … 26100 Wiring …)
+  drive estimating, which lives fine in the *Home Repair Proposal* Excel. Only promote to a Notion
+  database if you later want Notion-driven scope tracking.
+- **DMI-30 recurring reminder.** Once jobs are flowing, a Notion automation can nudge the DMI-30
+  each pay period off a date field. Structure first.
