@@ -1,0 +1,3 @@
+Company,Contact Name,Trade,SLBE Status,Federal ID / EIN,Phone,Email,Insurance Carrier,Insurance Expiry,Typical Cost Range,Active?,Notes
+SAMPLE - Acme Roofing LLC,John Doe,Roofing,S,12-3456789,555-555-0101,john@acmeroof.example,State Farm,2026-12-31,8000-25000,Yes,"SAMPLE ROW - delete after import. S = SLBE-certified, O = Other."
+SAMPLE - Bright Spark Electric,Jane Roe,Electrical,O,98-7654321,555-555-0102,jane@brightspark.example,Allstate,2026-09-30,3000-12000,Yes,"SAMPLE ROW - delete after import."
