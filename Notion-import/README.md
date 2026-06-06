@@ -30,8 +30,10 @@ relation (a relation has nowhere to put the dollar amount), so it gets its own t
 exists, SLBE %, "lien releases outstanding," and "what's blocking payment" all calculate
 themselves.
 
-The pack is pre-seeded with **3302 Chipco St** so relations work immediately. Rows prefixed
-`SAMPLE -` (in Subcontractors and Job Subs) are illustrations — **delete them after import.**
+The pack is pre-seeded with the **real, finished 3302 Chipco St** job — all 11 subcontractors
+pulled from its DMI-20 / DMI-30 forms — so relations and rollups work the moment you wire them.
+Built-in sanity check: the Job Subs data reconciles exactly to that job's filed SLBE figure —
+**$38,623 SLBE ÷ $112,121.14 total = 34.45%**. (It's all real data — nothing to delete.)
 
 ---
 
@@ -55,16 +57,18 @@ Click a column header → **Edit property** → change **Type**.
 | Column | Type |
 |---|---|
 | Project | Title |
+| Homeowner | Text |
 | Status | **Status** → `Assigned`, `Inspection`, `Scope Proposal`, `Approved / In Build`, `Payment Pending`, `Closed` |
 | Program | **Select** → `Healthy Homes`, `CRA` |
 | Batch (Month) | **Select** (e.g. `2026-06`) — 6 homes assigned at the start of each month |
 | Roofing Job? | **Checkbox** |
+| Contract # / PO # / WO # (Gordian) | Text |
 | Contract Total / Amount Received / Amount Outstanding | **Number → Dollar** |
 | SLBE % | **Number → Percent** (manual for historical jobs; auto-calculated for new ones — see Step 4) |
 | CPM Start Date | **Date** — clock starts at scope approval |
 | CPM Due Date | **Formula** → `dateAdd(prop("CPM Start Date"), 60, "days")` — the 60-day deadline |
-| Permit Expiry | **Date** |
-| other `Date …` | **Date** |
+| Date Permits Pulled / Permit Expiry / Date Work Complete / Date Payment Submitted / Date Payment Received | **Date** |
+| Warranty Expiry (General) / (Roof) / (Termite) | **Date** |
 | Dropbox Folder | **URL** |
 | Notes | Text |
 
@@ -75,7 +79,7 @@ Click a column header → **Edit property** → change **Type**.
 | Trade | **Select** |
 | SLBE Certified? / W/MBE Certified? / Insurance on File? / Active? | **Checkbox** |
 | Insurance Expiry | **Date** |
-| Address / Phone / Email / Notes | Text |
+| Contact Name, Federal ID/EIN, Phone, Email, Address, Insurance Carrier, Notes | Text |
 
 **Job Subs**
 | Column | Type |
@@ -84,6 +88,7 @@ Click a column header → **Edit property** → change **Type**.
 | Amount | **Number → Dollar** |
 | Counts toward SLBE? / COI Valid for Job? / Lien Release Signed? / Sub Invoice Received? | **Checkbox** |
 | Scope of Work / Trade / Notes | Text |
+| Project / Subcontractor | leave as **Text** for now → become **Relations** in Step 3 |
 
 **Closeout Items**
 | Column | Type |
@@ -91,9 +96,11 @@ Click a column header → **Edit property** → change **Type**.
 | Document | Title |
 | Phase | **Select** → `Inspection`, `Scope`, `Sub Qualification`, `Build`, `Closeout` (seed rows are all `Closeout`) |
 | Category | **Select** |
+| Responsible Party | **Select** → `Luz`, `Subs`, `Homeowner`, `Notary`, … |
 | Status | **Status** → `Not started`, `In progress`, `Awaiting signature`, `Awaiting notary`, `Done` |
 | Needs Signature / Needs Notary / Blocks Payment | **Checkbox** |
 | Notes | Text |
+| Project | leave as **Text** for now → becomes a **Relation** in Step 3 |
 
 ## Step 3 — Add the relations (the wiring)
 
