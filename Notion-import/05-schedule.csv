@@ -1,0 +1,21 @@
+Task,Project,Job Sub,Phase,Type,Critical Path?,Start,End,Status,Notes
+Soffit & Fascia,3610 E. Martin Luther King Blvd,3610 - Orange Painting,Envelope,Task,Yes,2026-06-10,2026-06-16,Not started,
+Roofing & Gutters,3610 E. Martin Luther King Blvd,3610 - Sunny R&R,Envelope,Task,Yes,2026-06-15,2026-06-20,Not started,Roofing starts 06/15 per owner direction.
+Remove Ceiling & Insulation,3610 E. Martin Luther King Blvd,3610 - Gruntle,Demo,Task,Yes,2026-06-20,2026-06-25,Not started,
+Rough Electrical,3610 E. Martin Luther King Blvd,3610 - 104 Electrical,Rough-In,Task,Yes,2026-06-25,2026-06-30,Not started,
+HVAC Rough-In / Ductwork,3610 E. Martin Luther King Blvd,3610 - Authentic Air,Rough-In,Task,No,2026-06-25,2026-06-30,Not started,
+Rough Electrical Inspection,3610 E. Martin Luther King Blvd,,Inspections (Rough),Rough Inspection,No,2026-06-30,2026-07-01,Not started,Schedule with City of Tampa Bldg Dept.
+Rough HVAC Inspection,3610 E. Martin Luther King Blvd,,Inspections (Rough),Rough Inspection,No,2026-06-30,2026-07-01,Not started,Schedule with City of Tampa Bldg Dept.
+Spray Insulation,3610 E. Martin Luther King Blvd,3610 - Gruntle,Insulation & Close,Task,Yes,2026-07-01,2026-07-03,Not started,
+Install New Ceiling,3610 E. Martin Luther King Blvd,3610 - Gruntle,Insulation & Close,Task,Yes,2026-07-03,2026-07-13,Not started,
+Windows Installation,3610 E. Martin Luther King Blvd,3610 - Gruntle,Trim-Out & Windows,Task,No,2026-07-13,2026-07-16,Not started,
+Electrical Trim-Out / Devices,3610 E. Martin Luther King Blvd,3610 - 104 Electrical,Trim-Out & Windows,Task,No,2026-07-13,2026-07-15,Not started,
+HVAC Trim-Out / Equipment,3610 E. Martin Luther King Blvd,3610 - Authentic Air,Trim-Out & Windows,Task,No,2026-07-13,2026-07-15,Not started,
+Flooring Removal and Installation,3610 E. Martin Luther King Blvd,3610 - Orange Painting,Finishes,Task,Yes,2026-07-15,2026-07-29,Not started,
+Toilet Replacement,3610 E. Martin Luther King Blvd,3610 - Gruntle,Finishes,Task,No,2026-07-29,2026-07-30,Not started,
+Exterior Painting,3610 E. Martin Luther King Blvd,3610 - Orange Painting,Finishes,Task,Yes,2026-07-29,2026-08-01,Not started,
+Termites Tent / Subterranean Pest Treatment,3610 E. Martin Luther King Blvd,3610 - Hughes Exterminators (Termites),Termites & Clean,Task,Yes,2026-08-01,2026-08-04,Not started,Tent fumigation + subterranean treatment.
+Cleaning,3610 E. Martin Luther King Blvd,3610 - W. Endless Solutions,Termites & Clean,Task,Yes,2026-08-04,2026-08-07,Not started,
+Electrical Final Inspection,3610 E. Martin Luther King Blvd,,Inspections (Final),Final Inspection,No,2026-08-07,2026-08-08,Not started,Schedule with City of Tampa Bldg Dept.
+HVAC Final Inspection,3610 E. Martin Luther King Blvd,,Inspections (Final),Final Inspection,No,2026-08-07,2026-08-08,Not started,Schedule with City of Tampa Bldg Dept.
+City of Tampa Final Building Inspection,3610 E. Martin Luther King Blvd,,Inspections (Final),Milestone,Yes,2026-08-08,2026-08-10,Not started,Certificate of Occupancy / job complete milestone.

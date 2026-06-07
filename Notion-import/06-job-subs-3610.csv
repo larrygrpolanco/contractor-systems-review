@@ -1,0 +1,14 @@
+Job Sub,Project,Subcontractor,Trade,Scope of Work,Amount,Counts toward SLBE?,COI Valid for Job?,Lien Release Signed?,Sub Invoice Received?,Notes
+3610 - City of Tampa (Permit),3610 E. Martin Luther King Blvd,,Permit / fees,Building & permit fees,1541.78,No,No,No,No,Government fee - not a subcontractor. Included so totals reconcile to the DMI-20.
+3610 - Hillsborough County,3610 E. Martin Luther King Blvd,,Notice of Commencement,Recording fee,13.46,No,No,No,No,Government fee - no lien release.
+3610 - Ambit Engineering,3610 E. Martin Luther King Blvd,"Ambit Engineering, LLC",Engineer / Survey,Engineering / survey,660.00,Yes,No,No,No,SLBE.
+3610 - JM Drafting,3610 E. Martin Luther King Blvd,JM Drafting Services LLC,Engineer / Survey,Site plan / drafting,2100.00,No,No,No,No,
+3610 - Tronco's Land of Florida,3610 E. Martin Luther King Blvd,Tronco's Land of Florida LLC,Tree / Site,Oak tree trim & prune,800.00,Yes,No,No,No,SLBE.
+3610 - KapCook,3610 E. Martin Luther King Blvd,KapCook Enterprises LLC,Supplier,Portable toilet,860.00,Yes,No,No,No,SLBE supplier.
+3610 - Orange Painting,3610 E. Martin Luther King Blvd,Orange Painting Services,Painting / Flooring,"Soffit & fascia, exterior paint, flooring",26496.82,Yes,No,No,No,"SLBE. Scheduled tasks: Soffit, Flooring, Exterior Painting."
+3610 - Sunny R&R,3610 E. Martin Luther King Blvd,Sunny R&R LLC,Roofing,Roof replacement & gutters,28601.00,No,No,No,No,Roofing job - per owner direction roofing starts 06/15.
+3610 - Gruntle,3610 E. Martin Luther King Blvd,"Gruntle, LLC",Carpentry / Drywall / Windows,"Remove & install ceiling, spray insulation, windows, toilet",39498.11,No,No,No,No,Largest sub (~31%). Scheduled across 5 tasks at different times.
+3610 - Authentic Air,3610 E. Martin Luther King Blvd,Authentic Air Solutions LLC,HVAC,"HVAC rough-in & trim, 2 heat pump units",11790.00,Yes,No,No,No,SLBE.
+3610 - 104 Electrical,3610 E. Martin Luther King Blvd,104 LCCA Electric & AC Corporation,Electrical,Rough & trim electrical,8000.00,No,No,No,No,Confirm vs JDP Electric alt-bid in budget file.
+3610 - Hughes Exterminators (Termites),3610 E. Martin Luther King Blvd,Hughes Exterminators,Pest / Termite,Subterranean termite treatment & tent fumigation,4600.00,No,No,No,No,
+3610 - W. Endless Solutions,3610 E. Martin Luther King Blvd,W. Endless Solutions LLC,Cleaning,Final cleaning,750.00,No,No,No,No,Wanda Vivieca.
